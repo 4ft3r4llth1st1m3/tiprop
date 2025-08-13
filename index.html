@@ -12,8 +12,9 @@
         :root {
             --bg-dark: #121212;
             --bg-card: #1E1E1E;
-            --primary-green: #2ecc71;
-            --text-light: #E0E0E0;
+            --primary-green: #27ae60; /* Verde césped un poco más vibrante */
+            --accent-yellow: #f1c40f; /* Amarillo del logo */
+            --text-light: #F5F5F5;
             --text-dark: #B3B3B3;
             --border-color: #2c2c2c;
             --font-display: 'Anton', sans-serif;
@@ -65,6 +66,10 @@
             font-size: 1.8rem;
             color: var(--text-light);
             text-decoration: none;
+        }
+        
+        .logo span {
+            color: var(--accent-yellow);
         }
 
         .nav-links {
@@ -156,11 +161,20 @@
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             display: inline-block;
         }
+        
+        .btn.btn-yellow {
+             background-color: var(--accent-yellow);
+        }
 
         .btn:hover {
             transform: translateY(-3px);
             box-shadow: 0 10px 20px rgba(46, 204, 113, 0.2);
         }
+        
+        .btn.btn-yellow:hover {
+            box-shadow: 0 10px 20px rgba(241, 196, 15, 0.2);
+        }
+
 
         .card-grid {
             display: grid;
@@ -198,9 +212,14 @@
             padding-left: 0;
         }
 
+        .card ul li {
+            margin-bottom: 10px;
+        }
+
         .card ul li::before {
             content: '⚽';
             margin-right: 10px;
+            font-size: 1rem;
         }
         
         .chart-container {
@@ -291,7 +310,7 @@
 
     <header>
         <nav class="container">
-            <a href="#" class="logo">RINCÓN DEL HINCHA</a>
+            <a href="#" class="logo">RINCÓN <span>DEL</span> HINCHA</a>
             <ul class="nav-links">
                 <li><a href="#diagnostico">Diagnóstico</a></li>
                 <li><a href="#propuesta">Propuesta</a></li>
@@ -324,6 +343,15 @@
                     <canvas id="diagnosisChart"></canvas>
                 </div>
                 <p style="text-align:center; color: var(--text-dark); font-size: 0.8rem; margin-top: 10px;">*Datos basados en un análisis de la performance promedio del sector vs. la performance actual del perfil.</p>
+                
+                <div class="card" style="margin-top: 40px;">
+                    <h3>Nota sobre los Datos Estadísticos</h3>
+                    <p>Para construir estos gráficos, realizamos un análisis metodológico:</p>
+                    <ul>
+                        <li style="list-style-type: '📊';"><strong>Datos de 'Rincón del Hincha (Actual)':</strong> Son una estimación profesional basada en métricas públicas observables: la frecuencia de publicación, la relación entre seguidores y la interacción promedio (likes/comentarios), y un análisis cualitativo de la estrategia visual y de contenidos actual.</li>
+                        <li style="list-style-type: '📈';"><strong>Datos de 'Promedio del Sector':</strong> Se obtienen analizando un conjunto de cuentas exitosas del mismo nicho. Estudiamos sus patrones de publicación, sus tasas de interacción y la calidad de su estrategia de branding para establecer un benchmark o punto de referencia competitivo.</li>
+                    </ul>
+                </div>
             </div>
         </section>
 
@@ -334,7 +362,7 @@
                 <div class="card-grid">
                     <div class="card">
                         <h3>1. MARCA, NO TIENDA</h3>
-                        <p>Construiremos una identidad visual y verbal que grite "fútbol". Cuando alguien vea un post, sabrá que es del Rincón sin leer el nombre. Esto es clave para generar confianza y valor percibido.</p>
+                        <p>Construiremos una identidad visual y verbal sólida. Cuando alguien vea un post, sabrá que es del Rincón sin leer el nombre. Integramos los colores existentes (como el amarillo) de forma estratégica para ser únicos y reconocibles.</p>
                     </div>
                     <div class="card">
                         <h3>2. RITMO ESTRATÉGICO</h3>
@@ -360,7 +388,9 @@
                 <div class="card" style="margin-bottom: 40px;">
                     <h3>2.1. Rediseño del Feed: La Nueva Estética</h3>
                     <ul>
-                        <li><b>Paleta de Colores:</b> Nos adueñamos del verde (césped), blanco (líneas) y negro (contraste). Look futbolero y profesional.</li>
+                        <li><b>Paleta de Colores Evolucionada:</b>
+                            <br><b>Principales (80-90%):</b> Verde (césped), Negro/Gris Oscuro (elegancia), Blanco (limpieza).
+                            <br><b>Acento (10-20%):</b> Amarillo (del logo) para impacto y llamados a la acción (CTAs).</li>
                         <li><b>Tipografías:</b> Usaremos fuentes con impacto y legibilidad (ej. 'Anton' para títulos) para unificar la comunicación visual.</li>
                         <li><b>Estilo Fotográfico:</b> Priorizaremos la buena luz y fondos limpios o contextuales. Crearemos un preset de edición para que todas las fotos tengan una coherencia visual.</li>
                         <li><b>Plantillas:</b> Desarrollaremos plantillas simples en Canva para los posts de debate, frases o anuncios, manteniendo la nueva identidad de marca.</li>
@@ -395,7 +425,7 @@
                                 <td>MIÉRCOLES</td>
                                 <td>Backstage</td>
                                 <td>Reel</td>
-                                <td><strong>Idea:</strong> Proceso de estampado de un short.<br><strong>Copy:</strong> "Nos preguntan cómo lo hacemos... ¡Así! Tu pasión merece la mejor calidad. ¿Qué número te pondrías vos?"</td>
+                                <td><strong>Idea:</strong> "Llegó el cargamento". Unboxing dinámico de una caja de proveedores, revelando la nueva mercadería.<br><strong>Copy:</strong> "Suena la alarma de ingresos nuevos 🔥 Mirá un adelanto de las bombas que acabamos de recibir. ¡Atento a las historias que vuelan!"</td>
                             </tr>
                             <tr>
                                 <td>JUEVES</td>
@@ -407,13 +437,13 @@
                                 <td>VIERNES</td>
                                 <td>Hype de Pilcha</td>
                                 <td>Reel</td>
-                                <td><strong>Idea:</strong> Transición mostrando diferentes conjuntos.<br><strong>Copy:</strong> "Sea cual sea tu equipo, en el Rincón tenemos la pilcha. ¿Con qué conjunto te quedás para el finde? Mirá todos en la web."</td>
+                                <td><strong>Idea:</strong> "Control de Calidad". Video mostrando en detalle los escudos, las costuras y la tela de una camiseta.<br><strong>Copy:</strong> "Miramos cada detalle para que te lleves una pilcha impecable. Calidad que se ve y se siente. ¿Qué es lo primero que le mirás a una camiseta nueva?"</td>
                             </tr>
                             <tr>
                                 <td>SÁBADO</td>
                                 <td>Voz del Hincha</td>
                                 <td>Post / Story</td>
-                                <td><strong>Idea:</strong> Repost de la mejor foto de un cliente.<br><strong>Copy:</strong> "¡Qué facha metió [usuario] en la cancha! Gracias por la confianza, crack. Mandanos tu foto y sé el prota del próximo post."</td>
+                                <td><strong>Idea:</strong> Repost de la mejor foto de un cliente.<br><strong>Copy:</strong> "¡Qué facha metió [usuario] en la cancha! Gracias por la confianza, crack. Mandanos tu foto con nuestra pilcha y sé el prota del próximo post."</td>
                             </tr>
                             <tr>
                                 <td>DOMINGO</td>
@@ -432,17 +462,17 @@
                 <h2 class="section-title">Estrategias de Crecimiento</h2>
                 <p class="section-subtitle">Con la casa en orden, salimos a buscar el partido. Estas son las estrategias para acelerar el crecimiento, aumentar las ventas y consolidar la marca.</p>
                 <div class="card-grid">
-                    <div class="card">
+                     <div class="card">
                         <h3>Sorteo "El Combo del Hincha"</h3>
-                        <p>Un sorteo inteligente que premia a los verdaderos fans. El premio es un voucher para la nueva web y para participar deben contar una anécdota de su club. Filtramos "cazasorteos" y generamos engagement real.</p>
+                        <p><strong>Fases:</strong> 1) **Hype:** Dos días antes, generamos expectativa en stories. 2) **Lanzamiento:** Publicamos el post con la mecánica de "contar una anécdota de tu club". 3) **Difusión:** Incentivamos compartir en historias y republicamos las mejores anécdotas. 4) **Cierre:** Anunciamos al ganador en un VIVO para máxima transparencia y engagement.</p>
                     </div>
                     <div class="card">
-                        <h3>Publicidad en Meta Ads</h3>
-                        <p>Es el acelerador. Invertiremos en anuncios para llegar a públicos híper-segmentados (hinchas de X club, en X ciudad) y haremos retargeting a quienes visiten la web sin comprar. Es una inversión, no un gasto.</p>
+                        <h3>Publicidad Estratégica (Meta Ads)</h3>
+                        <p><strong>Fases:</strong> 1) **Alcance:** Promocionamos los mejores Reels a públicos similares a nuestros seguidores para ganar visibilidad. 2) **Tráfico:** Durante el sorteo, creamos una campaña para llevar gente a la nueva web. 3) **Conversión:** La más importante. Hacemos retargeting a quienes visitaron la web y no compraron, mostrándoles el producto que vieron.</p>
                     </div>
                     <div class="card">
-                        <h3>Colaboraciones de Nicho</h3>
-                        <p>Nos asociaremos con micro-influencers de fútbol (cuentas de hinchas, periodistas partidarios). Su recomendación es más auténtica y efectiva que la de un influencer genérico. Canje de pilcha por visibilidad de calidad.</p>
+                        <h3>Club de Hinchas VIP</h3>
+                        <p>Crearemos un grupo exclusivo o lista de difusión en WhatsApp para clientes fieles. Por este canal, recibirán ofertas secretas, acceso anticipado a nuevos ingresos y contenido que no se ve en redes. Esto genera una lealtad brutal y ventas recurrentes.</p>
                     </div>
                 </div>
 
@@ -450,15 +480,15 @@
                 <div class="chart-container">
                     <canvas id="growthChart"></canvas>
                 </div>
-                 <p style="text-align:center; color: var(--text-dark); font-size: 0.8rem; margin-top: 10px;">*Proyección estimada basada en la implementación consistente de la estrategia 360°.</p>
+                <p style="text-align:center; color: var(--text-dark); font-size: 0.8rem; margin-top: 10px;">*Proyección estimada basada en la implementación consistente de la estrategia 360°.</p>
+                <p style="text-align:center; color: var(--text-dark); font-size: 0.9rem; margin-top: 20px;">Esta proyección se basa en la mejora directa de los KPIs analizados en el diagnóstico inicial.</p>
             </div>
         </section>
         
         <section id="final-cta" style="background-color: var(--bg-card);">
              <div class="container" style="text-align:center;">
                 <h2 class="section-title">¿LISTO PARA JUGAR EN PRIMERA?</h2>
-                <p class="section-subtitle">Esta es la hoja de ruta para dejar de competir y empezar a dominar. Si estás listo para transformar @rincon_del_hincha, hablemos. <br>El partido empieza ahora.</p>
-                <a href="https://wa.me/TUNUMERODEWHATSAPP" target="_blank" class="btn">HABLEMOS</a>
+                <p class="section-subtitle">Esta es la hoja de ruta para dejar de competir y empezar a dominar.<br>Si estás listo para transformar @rincon_del_hincha, el partido empieza ahora.</p>
              </div>
         </section>
 
@@ -497,14 +527,14 @@
                 datasets: [{
                     label: 'Rincón del Hincha (Actual)',
                     data: [30, 45, 40, 50],
-                    backgroundColor: 'rgba(255, 255, 255, 0.5)',
-                    borderColor: 'rgba(255, 255, 255, 1)',
+                    backgroundColor: 'rgba(245, 245, 245, 0.5)',
+                    borderColor: 'rgba(245, 245, 245, 1)',
                     borderWidth: 1
                 }, {
                     label: 'Promedio del Sector',
                     data: [85, 70, 80, 75],
-                    backgroundColor: 'rgba(46, 204, 113, 0.8)',
-                    borderColor: 'rgba(46, 204, 113, 1)',
+                    backgroundColor: 'rgba(39, 174, 96, 0.8)',
+                    borderColor: 'rgba(39, 174, 96, 1)',
                     borderWidth: 1
                 }]
             },
@@ -514,7 +544,7 @@
                     title: {
                         display: true,
                         text: 'Análisis Comparativo de Performance',
-                        color: '#E0E0E0',
+                        color: '#F5F5F5',
                         font: { size: 18, family: "'Inter', sans-serif" }
                     },
                     legend: {
@@ -545,15 +575,15 @@
                 datasets: [{
                     label: 'Tasa de Engagement (%)',
                     data: [1.5, 2.2, 3.0, 3.8, 4.5, 5.2],
-                    borderColor: 'rgba(46, 204, 113, 1)',
-                    backgroundColor: 'rgba(46, 204, 113, 0.1)',
+                    borderColor: 'rgba(39, 174, 96, 1)',
+                    backgroundColor: 'rgba(39, 174, 96, 0.1)',
                     fill: true,
                     tension: 0.4
                 }, {
                     label: 'Clics a la Web (Crecimiento %)',
                     data: [0, 50, 120, 200, 350, 500],
-                     borderColor: 'rgba(255, 255, 255, 0.8)',
-                     backgroundColor: 'rgba(255, 255, 255, 0.1)',
+                     borderColor: 'rgba(241, 196, 15, 1)',
+                     backgroundColor: 'rgba(241, 196, 15, 0.1)',
                      fill: true,
                      tension: 0.4
                 }]
@@ -564,7 +594,7 @@
                     title: {
                         display: true,
                         text: 'Proyección de Crecimiento de Métricas Clave',
-                        color: '#E0E0E0',
+                        color: '#F5F5F5',
                         font: { size: 18, family: "'Inter', sans-serif" }
                     },
                      legend: {
