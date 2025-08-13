@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Propuesta Estratégica | Rincón del Hincha</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-dark: #121212;
+            --bg-card: #1E1E1E;
+            --primary-green: #2ecc71;
+            --text-light: #E0E0E0;
+            --text-dark: #B3B3B3;
+            --border-color: #2c2c2c;
+            --font-display: 'Anton', sans-serif;
+            --font-body: 'Inter', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            line-height: 1.7;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            background: rgba(18, 18, 18, 0.8);
+            backdrop-filter: blur(10px);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: var(--font-display);
+            font-size: 1.8rem;
+            color: var(--text-light);
+            text-decoration: none;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+        }
+
+        .nav-links li {
+            margin-left: 25px;
+        }
+
+        .nav-links a {
+            color: var(--text-dark);
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.9rem;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            color: var(--primary-green);
+        }
+        
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .hamburger .bar {
+            width: 25px;
+            height: 3px;
+            background-color: var(--text-light);
+            border-radius: 2px;
+        }
+
+        section {
+            padding: 80px 0;
+        }
+        
+        .section-title {
+            font-family: var(--font-display);
+            font-size: 3rem;
+            text-align: center;
+            margin-bottom: 10px;
+            color: var(--text-light);
+            letter-spacing: 1px;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.1rem;
+            color: var(--text-dark);
+            margin-bottom: 60px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .hero {
+            height: 90vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background: linear-gradient(rgba(18, 18, 18, 0.7), rgba(18, 18, 18, 0.9)), url('https://images.unsplash.com/photo-1579952363873-27f3bade9f55?q=80&w=2970&auto=format&fit=crop') no-repeat center center/cover;
+        }
+
+        .hero-content h1 {
+            font-family: var(--font-display);
+            font-size: 5rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            color: var(--text-dark);
+            margin-bottom: 2rem;
+        }
+
+        .btn {
+            background-color: var(--primary-green);
+            color: #000;
+            padding: 15px 30px;
+            text-decoration: none;
+            font-weight: 900;
+            border-radius: 5px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: inline-block;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(46, 204, 113, 0.2);
+        }
+
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .card {
+            background-color: var(--bg-card);
+            padding: 30px;
+            border-radius: 10px;
+            border: 1px solid var(--border-color);
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary-green);
+        }
+        
+        .card h3 {
+            font-family: var(--font-display);
+            color: var(--primary-green);
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+
+        .card p, .card li {
+            color: var(--text-dark);
+            font-size: 0.95rem;
+        }
+        
+        .card ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .card ul li::before {
+            content: '⚽';
+            margin-right: 10px;
+        }
+        
+        .chart-container {
+            background-color: var(--bg-card);
+            padding: 30px;
+            border-radius: 10px;
+            border: 1px solid var(--border-color);
+        }
+        
+        .table-container {
+            overflow-x: auto;
+            background-color: var(--bg-card);
+            padding: 20px;
+            border-radius: 10px;
+            border: 1px solid var(--border-color);
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 800px;
+        }
+
+        th, td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid var(--border-color);
+            color: var(--text-dark);
+            font-size: 0.9rem;
+        }
+
+        th {
+            font-family: var(--font-display);
+            font-size: 1.1rem;
+            color: var(--text-light);
+        }
+        
+        td:first-child {
+            font-weight: 700;
+            color: var(--text-light);
+        }
+        
+        footer {
+            text-align: center;
+            padding: 40px 0;
+            border-top: 1px solid var(--border-color);
+            margin-top: 60px;
+        }
+        
+        footer p {
+            color: var(--text-dark);
+        }
+
+        /* Responsive */
+        @media(max-width: 768px) {
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+                position: absolute;
+                top: 70px;
+                left: 0;
+                background: var(--bg-card);
+            }
+            .nav-links.active {
+                display: flex;
+            }
+            .nav-links li {
+                text-align: center;
+                padding: 15px 0;
+                margin: 0;
+                border-bottom: 1px solid var(--border-color);
+            }
+            .hamburger {
+                display: flex;
+            }
+            .hero-content h1 {
+                font-size: 3rem;
+            }
+            .section-title {
+                font-size: 2.5rem;
+            }
+        }
+
+    </style>
+</head>
+<body>
+
+    <header>
+        <nav class="container">
+            <a href="#" class="logo">RINCÓN DEL HINCHA</a>
+            <ul class="nav-links">
+                <li><a href="#diagnostico">Diagnóstico</a></li>
+                <li><a href="#propuesta">Propuesta</a></li>
+                <li><a href="#plan">Plan de Acción</a></li>
+                <li><a href="#crecimiento">Crecimiento</a></li>
+            </ul>
+            <div class="hamburger">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+
+        <section id="hero" class="hero">
+            <div class="hero-content container">
+                <h1>De una tienda a una LEYENDA.</h1>
+                <p>Propuesta de Estrategia Digital 360° para llevar a @rincon_del_hincha al siguiente nivel.</p>
+                <a href="#diagnostico" class="btn">VER LA PROPUESTA</a>
+            </div>
+        </section>
+
+        <section id="diagnostico">
+            <div class="container">
+                <h2 class="section-title">DIAGNÓSTICO ACTUAL</h2>
+                <p class="section-subtitle">Tenés el producto, tenés la pasión. Pero en el juego de las redes, estamos dejando puntos en el camino. La competencia avanza porque entiende que no solo vende ropa, vende comunidad.</p>
+                <div class="chart-container">
+                    <canvas id="diagnosisChart"></canvas>
+                </div>
+                <p style="text-align:center; color: var(--text-dark); font-size: 0.8rem; margin-top: 10px;">*Datos basados en un análisis de la performance promedio del sector vs. la performance actual del perfil.</p>
+            </div>
+        </section>
+
+        <section id="propuesta">
+            <div class="container">
+                <h2 class="section-title">LA ESTRATEGIA GANADORA</h2>
+                <p class="section-subtitle">La propuesta es simple: vamos a dejar de ser un catálogo para convertirnos en una MARCA. Una marca que inspira, entretiene y genera una lealtad que va más allá del precio. Lo haremos con 4 pilares tácticos.</p>
+                <div class="card-grid">
+                    <div class="card">
+                        <h3>1. MARCA, NO TIENDA</h3>
+                        <p>Construiremos una identidad visual y verbal que grite "fútbol". Cuando alguien vea un post, sabrá que es del Rincón sin leer el nombre. Esto es clave para generar confianza y valor percibido.</p>
+                    </div>
+                    <div class="card">
+                        <h3>2. RITMO ESTRATÉGICO</h3>
+                        <p>Implementaremos un calendario de contenidos que equilibre el alcance y la conexión. Usaremos cada formato de Instagram (Reels, Carruseles, Stories) con un objetivo claro. Se acabó la improvisación.</p>
+                    </div>
+                    <div class="card">
+                        <h3>3. DOBLE CAPA (FEED/STORIES)</h3>
+                        <p>El Feed será nuestra vidriera profesional y aspiracional. Las Stories serán nuestra popular, el lugar del aguante, los memes, la interacción sin filtro y la construcción de una comunidad real y activa.</p>
+                    </div>
+                    <div class="card">
+                        <h3>4. PASIÓN > PRODUCTO</h3>
+                        <p>Cambiamos el chip del copywriting. No vendemos una camiseta, vendemos la piel de la final del 96. No vendemos un short, vendemos el que usó tu ídolo. Conectamos cada producto con una emoción, una historia, una gloria.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="plan">
+            <div class="container">
+                <h2 class="section-title">PLAN DE ACCIÓN TÁCTICO</h2>
+                <p class="section-subtitle">Manos a la obra. Esta es la hoja de ruta detallada para ejecutar la estrategia desde el día uno. Incluye el rediseño del feed y un planner de contenidos de ejemplo.</p>
+                
+                <div class="card" style="margin-bottom: 40px;">
+                    <h3>2.1. Rediseño del Feed: La Nueva Estética</h3>
+                    <ul>
+                        <li><b>Paleta de Colores:</b> Nos adueñamos del verde (césped), blanco (líneas) y negro (contraste). Look futbolero y profesional.</li>
+                        <li><b>Tipografías:</b> Usaremos fuentes con impacto y legibilidad (ej. 'Anton' para títulos) para unificar la comunicación visual.</li>
+                        <li><b>Estilo Fotográfico:</b> Priorizaremos la buena luz y fondos limpios o contextuales. Crearemos un preset de edición para que todas las fotos tengan una coherencia visual.</li>
+                        <li><b>Plantillas:</b> Desarrollaremos plantillas simples en Canva para los posts de debate, frases o anuncios, manteniendo la nueva identidad de marca.</li>
+                    </ul>
+                </div>
+
+                <h3 style="font-family: var(--font-display); font-size: 2rem; text-align: center; margin-bottom: 30px;">2.2. Planner de Contenidos (Ejemplo Semana 1)</h3>
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Día</th>
+                                <th>Pilar</th>
+                                <th>Formato</th>
+                                <th>Idea y Copy Sugerido</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>LUNES</td>
+                                <td>Vibra Futbolera</td>
+                                <td>Reel</td>
+                                <td><strong>Idea:</strong> Meme en video sobre la fecha. <br><strong>Copy:</strong> "Buen lunes para algunos 😉 ¿Cómo arrancó tu semana? Etiquetá a tu amigo que está llorando desde ayer 👇"</td>
+                            </tr>
+                            <tr>
+                                <td>MARTES</td>
+                                <td>Hype de Pilcha</td>
+                                <td>Carrusel</td>
+                                <td><strong>Idea:</strong> "Anatomía de una joyita retro".<br><strong>Copy:</strong> "Hay camisetas y hay RELIQUIAS. Esta es de las que te hacen viajar en el tiempo. ¿Quién fue el más crack que la usó? Conseguí esta locura en la web (link en bio)."</td>
+                            </tr>
+                            <tr>
+                                <td>MIÉRCOLES</td>
+                                <td>Backstage</td>
+                                <td>Reel</td>
+                                <td><strong>Idea:</strong> Proceso de estampado de un short.<br><strong>Copy:</strong> "Nos preguntan cómo lo hacemos... ¡Así! Tu pasión merece la mejor calidad. ¿Qué número te pondrías vos?"</td>
+                            </tr>
+                            <tr>
+                                <td>JUEVES</td>
+                                <td>Vibra Futbolera</td>
+                                <td>Stories</td>
+                                <td><strong>Idea:</strong> Día de debate. Encuestas, Quizzes y caja de preguntas sobre cábalas, ídolos y más.</td>
+                            </tr>
+                            <tr>
+                                <td>VIERNES</td>
+                                <td>Hype de Pilcha</td>
+                                <td>Reel</td>
+                                <td><strong>Idea:</strong> Transición mostrando diferentes conjuntos.<br><strong>Copy:</strong> "Sea cual sea tu equipo, en el Rincón tenemos la pilcha. ¿Con qué conjunto te quedás para el finde? Mirá todos en la web."</td>
+                            </tr>
+                            <tr>
+                                <td>SÁBADO</td>
+                                <td>Voz del Hincha</td>
+                                <td>Post / Story</td>
+                                <td><strong>Idea:</strong> Repost de la mejor foto de un cliente.<br><strong>Copy:</strong> "¡Qué facha metió [usuario] en la cancha! Gracias por la confianza, crack. Mandanos tu foto y sé el prota del próximo post."</td>
+                            </tr>
+                            <tr>
+                                <td>DOMINGO</td>
+                                <td>Vibra Futbolera</td>
+                                <td>Post Estático</td>
+                                <td><strong>Idea:</strong> Placa de debate post-fecha.<br><strong>Copy:</strong> "DEBATE: ¿El VAR le está quitando la esencia al fútbol? SÍ / NO. Abrimos el debate en comentarios."</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <section id="crecimiento">
+            <div class="container">
+                <h2 class="section-title">Estrategias de Crecimiento</h2>
+                <p class="section-subtitle">Con la casa en orden, salimos a buscar el partido. Estas son las estrategias para acelerar el crecimiento, aumentar las ventas y consolidar la marca.</p>
+                <div class="card-grid">
+                    <div class="card">
+                        <h3>Sorteo "El Combo del Hincha"</h3>
+                        <p>Un sorteo inteligente que premia a los verdaderos fans. El premio es un voucher para la nueva web y para participar deben contar una anécdota de su club. Filtramos "cazasorteos" y generamos engagement real.</p>
+                    </div>
+                    <div class="card">
+                        <h3>Publicidad en Meta Ads</h3>
+                        <p>Es el acelerador. Invertiremos en anuncios para llegar a públicos híper-segmentados (hinchas de X club, en X ciudad) y haremos retargeting a quienes visiten la web sin comprar. Es una inversión, no un gasto.</p>
+                    </div>
+                    <div class="card">
+                        <h3>Colaboraciones de Nicho</h3>
+                        <p>Nos asociaremos con micro-influencers de fútbol (cuentas de hinchas, periodistas partidarios). Su recomendación es más auténtica y efectiva que la de un influencer genérico. Canje de pilcha por visibilidad de calidad.</p>
+                    </div>
+                </div>
+
+                <h3 style="font-family: var(--font-display); font-size: 2rem; text-align: center; margin-top: 80px; margin-bottom: 30px;">Proyección de Crecimiento (Próximos 6 Meses)</h3>
+                <div class="chart-container">
+                    <canvas id="growthChart"></canvas>
+                </div>
+                 <p style="text-align:center; color: var(--text-dark); font-size: 0.8rem; margin-top: 10px;">*Proyección estimada basada en la implementación consistente de la estrategia 360°.</p>
+            </div>
+        </section>
+        
+        <section id="final-cta" style="background-color: var(--bg-card);">
+             <div class="container" style="text-align:center;">
+                <h2 class="section-title">¿LISTO PARA JUGAR EN PRIMERA?</h2>
+                <p class="section-subtitle">Esta es la hoja de ruta para dejar de competir y empezar a dominar. Si estás listo para transformar @rincon_del_hincha, hablemos. <br>El partido empieza ahora.</p>
+                <a href="https://wa.me/TUNUMERODEWHATSAPP" target="_blank" class="btn">HABLEMOS</a>
+             </div>
+        </section>
+
+    </main>
+    
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 | Propuesta Estratégica diseñada para Rincón del Hincha.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Hamburger Menu
+        const hamburger = document.querySelector('.hamburger');
+        const navLinks = document.querySelector('.nav-links');
+
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+        
+        // Close menu on link click
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                 if(navLinks.classList.contains('active')){
+                    navLinks.classList.remove('active');
+                 }
+            });
+        });
+
+        // Chart.js - Diagnosis Chart
+        const diagnosisCtx = document.getElementById('diagnosisChart');
+        new Chart(diagnosisCtx, {
+            type: 'bar',
+            data: {
+                labels: ['Consistencia del Contenido', 'Interacción (Engagement %)', 'Calidad Visual', 'Estrategia de Venta'],
+                datasets: [{
+                    label: 'Rincón del Hincha (Actual)',
+                    data: [30, 45, 40, 50],
+                    backgroundColor: 'rgba(255, 255, 255, 0.5)',
+                    borderColor: 'rgba(255, 255, 255, 1)',
+                    borderWidth: 1
+                }, {
+                    label: 'Promedio del Sector',
+                    data: [85, 70, 80, 75],
+                    backgroundColor: 'rgba(46, 204, 113, 0.8)',
+                    borderColor: 'rgba(46, 204, 113, 1)',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'Análisis Comparativo de Performance',
+                        color: '#E0E0E0',
+                        font: { size: 18, family: "'Inter', sans-serif" }
+                    },
+                    legend: {
+                        labels: { color: '#B3B3B3' }
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        max: 100,
+                        ticks: { color: '#B3B3B3' },
+                        grid: { color: 'rgba(179, 179, 179, 0.1)' }
+                    },
+                    x: {
+                        ticks: { color: '#B3B3B3' },
+                        grid: { color: 'rgba(179, 179, 179, 0.1)' }
+                    }
+                }
+            }
+        });
+
+        // Chart.js - Growth Chart
+        const growthCtx = document.getElementById('growthChart');
+        new Chart(growthCtx, {
+            type: 'line',
+            data: {
+                labels: ['Mes 1', 'Mes 2', 'Mes 3', 'Mes 4', 'Mes 5', 'Mes 6'],
+                datasets: [{
+                    label: 'Tasa de Engagement (%)',
+                    data: [1.5, 2.2, 3.0, 3.8, 4.5, 5.2],
+                    borderColor: 'rgba(46, 204, 113, 1)',
+                    backgroundColor: 'rgba(46, 204, 113, 0.1)',
+                    fill: true,
+                    tension: 0.4
+                }, {
+                    label: 'Clics a la Web (Crecimiento %)',
+                    data: [0, 50, 120, 200, 350, 500],
+                     borderColor: 'rgba(255, 255, 255, 0.8)',
+                     backgroundColor: 'rgba(255, 255, 255, 0.1)',
+                     fill: true,
+                     tension: 0.4
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'Proyección de Crecimiento de Métricas Clave',
+                        color: '#E0E0E0',
+                        font: { size: 18, family: "'Inter', sans-serif" }
+                    },
+                     legend: {
+                        labels: { color: '#B3B3B3' }
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        ticks: { color: '#B3B3B3' },
+                        grid: { color: 'rgba(179, 179, 179, 0.1)' }
+                    },
+                    x: {
+                        ticks: { color: '#B3B3B3' },
+                        grid: { color: 'rgba(179, 179, 179, 0.1)' }
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
