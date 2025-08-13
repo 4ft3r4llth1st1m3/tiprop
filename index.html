@@ -178,8 +178,8 @@
 
         .card-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
         }
 
         .card {
@@ -188,6 +188,8 @@
             border-radius: 10px;
             border: 1px solid var(--border-color);
             transition: transform 0.3s ease, border-color 0.3s ease;
+            display: flex;
+            flex-direction: column;
         }
 
         .card:hover {
@@ -210,6 +212,7 @@
         .card ul {
             list-style: none;
             padding-left: 0;
+            flex-grow: 1;
         }
 
         .card ul li {
@@ -388,12 +391,12 @@
                 <div class="card" style="margin-bottom: 40px;">
                     <h3>2.1. Rediseño del Feed: La Nueva Estética</h3>
                     <ul>
-                        <li><b>Paleta de Colores Evolucionada:</b>
-                            <br><b>Principales (80-90%):</b> Verde (césped), Negro/Gris Oscuro (elegancia), Blanco (limpieza).
-                            <br><b>Acento (10-20%):</b> Amarillo (del logo) para impacto y llamados a la acción (CTAs).</li>
-                        <li><b>Tipografías:</b> Usaremos fuentes con impacto y legibilidad (ej. 'Anton' para títulos) para unificar la comunicación visual.</li>
-                        <li><b>Estilo Fotográfico:</b> Priorizaremos la buena luz y fondos limpios o contextuales. Crearemos un preset de edición para que todas las fotos tengan una coherencia visual.</li>
-                        <li><b>Plantillas:</b> Desarrollaremos plantillas simples en Canva para los posts de debate, frases o anuncios, manteniendo la nueva identidad de marca.</li>
+                        <li><strong>Paleta de Colores Evolucionada:</strong>
+                            <br><strong>Principales (80-90%):</strong> Verde (césped), Negro/Gris Oscuro (elegancia), Blanco (limpieza).
+                            <br><strong>Acento (10-20%):</strong> Amarillo (del logo) para impacto y llamados a la acción (CTAs).</li>
+                        <li><strong>Tipografías:</strong> Usaremos fuentes con impacto y legibilidad (ej. 'Anton' para títulos) para unificar la comunicación visual.</li>
+                        <li><strong>Estilo Fotográfico:</strong> Priorizaremos la buena luz y fondos limpios o contextuales. Crearemos un preset de edición para que todas las fotos tengan una coherencia visual.</li>
+                        <li><strong>Plantillas:</strong> Desarrollaremos plantillas simples en Canva para los posts de debate, frases o anuncios, manteniendo la nueva identidad de marca.</li>
                     </ul>
                 </div>
 
@@ -459,20 +462,24 @@
 
         <section id="crecimiento">
             <div class="container">
-                <h2 class="section-title">Estrategias de Crecimiento</h2>
-                <p class="section-subtitle">Con la casa en orden, salimos a buscar el partido. Estas son las estrategias para acelerar el crecimiento, aumentar las ventas y consolidar la marca.</p>
+                <h2 class="section-title">Estrategias de Crecimiento y Negocio</h2>
+                <p class="section-subtitle">Con la casa en orden, salimos a buscar el partido. Estas son las estrategias para acelerar el crecimiento, aumentar las ventas y expandir el modelo de negocio.</p>
                 <div class="card-grid">
                      <div class="card">
                         <h3>Sorteo "El Combo del Hincha"</h3>
-                        <p><strong>Fases:</strong> 1) **Hype:** Dos días antes, generamos expectativa en stories. 2) **Lanzamiento:** Publicamos el post con la mecánica de "contar una anécdota de tu club". 3) **Difusión:** Incentivamos compartir en historias y republicamos las mejores anécdotas. 4) **Cierre:** Anunciamos al ganador en un VIVO para máxima transparencia y engagement.</p>
+                        <p><strong>Fases:</strong> 1) <strong>Hype:</strong> Dos días antes, generamos expectativa en stories. 2) <strong>Lanzamiento:</strong> Publicamos el post con la mecánica de "contar una anécdota de tu club". 3) <strong>Difusión:</strong> Incentivamos compartir en historias y republicamos las mejores anécdotas. 4) <strong>Cierre:</strong> Anunciamos al ganador en un VIVO para máxima transparencia y engagement.</p>
                     </div>
                     <div class="card">
                         <h3>Publicidad Estratégica (Meta Ads)</h3>
-                        <p><strong>Fases:</strong> 1) **Alcance:** Promocionamos los mejores Reels a públicos similares a nuestros seguidores para ganar visibilidad. 2) **Tráfico:** Durante el sorteo, creamos una campaña para llevar gente a la nueva web. 3) **Conversión:** La más importante. Hacemos retargeting a quienes visitaron la web y no compraron, mostrándoles el producto que vieron.</p>
+                        <p><strong>Fases:</strong> 1) <strong>Alcance:</strong> Promocionamos los mejores Reels a públicos similares a nuestros seguidores. 2) <strong>Tráfico:</strong> Durante el sorteo, creamos una campaña para llevar gente a la nueva web. 3) <strong>Conversión:</strong> Hacemos retargeting a quienes visitaron la web y no compraron, mostrándoles el producto que vieron.</p>
                     </div>
                     <div class="card">
-                        <h3>Club de Hinchas VIP</h3>
-                        <p>Crearemos un grupo exclusivo o lista de difusión en WhatsApp para clientes fieles. Por este canal, recibirán ofertas secretas, acceso anticipado a nuevos ingresos y contenido que no se ve en redes. Esto genera una lealtad brutal y ventas recurrentes.</p>
+                        <h3>Programa de Lealtad</h3>
+                        <p>Reemplazamos un simple "Club VIP" por un programa de puntos. Cada compra suma puntos canjeables por descuentos, envíos gratis o acceso anticipado a productos exclusivos. Fomenta la recurrencia y crea una base de clientes súper fieles.</p>
+                    </div>
+                     <div class="card">
+                        <h3>Expansión a Venta Mayorista (B2B)</h3>
+                        <p>Abrimos una nueva unidad de negocio de forma sutil. Creamos un canal de contacto exclusivo para mayoristas (vía Link en Bio y un Highlight) sin contaminar el feed principal, que sigue enfocado en el hincha. La fuerte marca B2C atraerá a clientes B2B.</p>
                     </div>
                 </div>
 
